@@ -1,10 +1,10 @@
     """
     ***************************************************************
-    (0)                  IF versus TRY 
+    (0)                  IF versus TRY
     ***************************************************************
 
-     (a) I hate if ....
-     (b) I hate else even more intensely
+     (a) I am a curmudgeon who hates "if" ....
+     (b) I hate "else" even more intensely
      (c) The following explains why.
 
 
@@ -14,7 +14,8 @@
                     gflanagi@richmond.edu
 
                     me+pyrva@georgeflanagin.com         """
-    
+
+
 
 
 
@@ -25,9 +26,9 @@
 
     """
     (1) This was the as written code.  get() returns the value of
-    a dictionary key if it exists, otherwise None. 
+    a dictionary key if it exists, otherwise None.
 
-    - If self.config is not a dictionary, get() will blow up. 
+    - If self.config is not a dictionary, get() will blow up.
     - If self.config is a defaultdict(#), get() may return
         whatever the default value is.
     """
@@ -38,9 +39,10 @@
 
 
 
-        
+
     #  defaultdict-s are a subject for another day. Incredibly useful, but
-    #   very lightly used.
+    #   very lightly used by most new Python programmers.
+
 
 
 
@@ -52,13 +54,14 @@
     (2) If you are going to use get() and test with if, you really
     need to supply the correct default value.
 
-    - Of course, this does not defend against proxy being in
+    - Of course, this does not defend against proxy's pre-existence in
         config, but having a value that is False.
     """
     if self.config.get('proxy', None):
         self.proxies = { 'https': self.config['proxy'] }
     else:
         self.proxies = {}
+
 
 
 
@@ -81,7 +84,7 @@
         Unfortunately, this if/else will wipe out any previous value
         of self.proxies. And the name is plural, so we would expect
         that it is going to have more than one proxy in proxies.
-    - Again "in" might be redefined in a derived user type, and you 
+    - Again "in" might be redefined in a derived user type, and you
         may not want what __contains__ returns. "in" does work with
         defaultdict-s.
     """
@@ -89,6 +92,7 @@
         self.proxies = { 'https': self.config['proxy'] }
     else:
         self.proxies = {}
+
 
 
 
@@ -106,7 +110,8 @@
     if 'proxy' in self.config:
         self.proxies['https'] = self.config['proxy']
     else:
-        pass 
+        pass
+
 
 
 
@@ -134,7 +139,8 @@
         self.proxies['https'] = localhost
 
 
-    
+
+
 
 
 
@@ -153,9 +159,10 @@
     """
     self.proxies = {}
         ....
-    if 'proxy' in self.config: 
+    if 'proxy' in self.config:
         self.proxies['https'] = self.config['proxy']
     # No else
+
 
 
 
@@ -198,6 +205,7 @@
 
 
 
+
     """
     (5) Why bother with the "if" at all? Just try it and see
     what happens.
@@ -208,7 +216,8 @@
         self.proxies['https'] = self.config['proxy']
     except:
         pass # or something more appropriate.
-    
+
+
 
 
 
@@ -224,7 +233,7 @@
 
 
     """
-    (6) You need to be a little more specific ...
+    (6) It does not hurt to be a little more specific ...
     """
     self.proxies = {}
         ....
@@ -232,6 +241,18 @@
         self.proxies['https'] = self.config['proxy']
     except KeyError as e:
         pass # or something more appropriate.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
