@@ -77,10 +77,10 @@
 
 
     """
-    (3) The correct way to test if something is in the dict is with
+    (3) The correct way to test if a key is in the dict is with
     the 'in' operator.
 
-    - NEVER INITIALIZE OBJECTS WITH A CONDITIONAL!!!
+    - VERY SELDOM SHOULD YOU INITIALIZE WITH A CONDITIONAL!
         Unfortunately, this if/else will wipe out any previous value
         of self.proxies. And the name is plural, so we would expect
         that it is going to have more than one proxy in proxies.
