@@ -1,3 +1,3 @@
 # PyRVA
 
-This repo contains materials related to the PyRVA meetup group.
+This material is now located at `https://github.com/pyrva`.
